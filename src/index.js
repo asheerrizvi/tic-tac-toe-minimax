@@ -5,7 +5,7 @@ import './styles/normalize.css';
 import './styles/skeleton.css';
 
 import { TTTBoard } from './board';
-import mcMove from './minimax';
+import moveWrapper from './minimax';
 
 const Square = (props) => {
   return (
@@ -80,7 +80,7 @@ class Game extends React.Component {
     if (calculateWinner(squares)) return;
     const machinePlayer = this.state.xIsUser ? 'O' : 'X';
     const tttBoard = new TTTBoard(3, squares);
-    const bestMove = mcMove(tttBoard, machinePlayer, 100);
+    const bestMove = moveWrapper(tttBoard, machinePlayer);
     squares[bestMove] = machinePlayer;
   }
 
